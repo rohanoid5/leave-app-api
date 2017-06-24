@@ -12,7 +12,7 @@ const userRoutes = require('./routes/user');
 
 //seedDb();
 
-mongoose.connect('mongodb://localhost/leave');
+mongoose.connect('mongodb://rohand:ozlopassword@ds135522.mlab.com:35522/leaves');
 mongoose.Promise = require('bluebird');
 
 const app = express();

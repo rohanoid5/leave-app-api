@@ -12,7 +12,7 @@ const userRoutes = require('./routes/user');
 
 //seedDb();
 
-mongoose.connect('mongodb://rohand:ozlopassword@ds135522.mlab.com:35522/leaves');
+mongoose.connect('mongodb://rohanoid5:leavesapi@ds135522.mlab.com:35522/leaves');
 mongoose.Promise = require('bluebird');
 
 const app = express();
@@ -42,6 +42,6 @@ app.get('/', (req,res) => {
 
 let port = helper.normalizePort(process.env.PORT || '3000');
 
-app.listen(port, () => {
-	console.log("The app has started!");
+app.listen(process.env.PORT || 3000, () => {
+	console.log("Application has been started!");
 });

@@ -35,6 +35,11 @@ app.use(authRoutes);
 app.use('/leaves', leaveRoutes);
 app.use(userRoutes);
 
+app.get('/', (req,res) => {
+	res.setHeader('content-type', 'application/json');
+  res.json({status: "ok", message: "You are in the root route"});
+});
+
 let port = helper.normalizePort(process.env.PORT || '3000');
 
 app.listen(port, () => {

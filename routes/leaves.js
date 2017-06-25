@@ -4,6 +4,7 @@ const leave = require('../models/leave');
 const user = require('../models/user');
 const Promise = require('bluebird');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 Promise.promisifyAll(mongoose);
 
@@ -15,18 +16,7 @@ function Leave(reason, start_date, end_date, requested_by, leave_type) {
     this.leave_type = leave_type;
 }
 
-router.get('/', (req, res) => {
-    res.setHeader('content-type', 'application/json');
-    leave.find({}, (err, data) => {
-        if (err) {
-          console.log(err);
-        } else {
-          res.json({ leaves: data });
-        }
-    });
-});
-
-router.put('/:id', isLoggedIn, (req, res) => {
+router.put('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.setHeader('content-type', 'application/json');
     if (req.user.role == 'MNG') {
       leave.findById(req.params.id, (err, data) => {
@@ -46,7 +36,7 @@ router.put('/:id', isLoggedIn, (req, res) => {
     } else res.json({status:404, leaves: 'null', message: 'You are not authorized' });
 });
 
-router.post('/', isLoggedIn, (req, res) => {
+router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.setHeader('content-type', 'application/json');
     const reason = req.body.reason;
     const start_date = req.body.start_date;
@@ -68,7 +58,7 @@ router.post('/', isLoggedIn, (req, res) => {
     );
 })
 
-router.get('/profile', isLoggedIn, (req, res) => {
+router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     res.setHeader('content-type', 'application/json');
     if (req.user.role == 'EMP') {
       leave.find({ 'requested_by.username': req.user.username }, (err, cData) => {

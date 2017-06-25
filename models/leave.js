@@ -6,7 +6,8 @@ const leaveSchema = mongoose.Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     },
-    username: String
+    username: String,
+		name: String
   },
 	start_date: {
 		type: String,

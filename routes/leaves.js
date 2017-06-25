@@ -44,7 +44,8 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     const leave_type = req.body.leave_type;
     let requested_by = {
         id: req.user._id,
-        username: req.user.username
+        username: req.user.username,
+        name: req.user.name
     };
     let newLeave = new Leave(reason, start_date, end_date, requested_by, leave_type);
     leave.create(

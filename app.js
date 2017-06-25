@@ -10,6 +10,7 @@ const user = require('./models/user');
 const leaveRoutes = require('./routes/leaves');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const cors = require('cors');
 
 //seedDb();
 
@@ -23,6 +24,7 @@ const app = express();
 // 	resave: false,
 // 	saveUninitialized: false
 // }));
+app.use(cors())
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());

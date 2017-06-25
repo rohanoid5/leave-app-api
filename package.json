@@ -10,17 +10,18 @@
   "author": "rohan_d",
   "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.4.7",
-    "body-parser": "^1.16.0",
-    "express": "^4.14.1",
-    "express-session": "^1.15.1",
-    "mongoose": "^4.8.1",
-    "passport": "^0.3.2",
-    "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0",
     "bcrypt": "^1.0.2",
     "bcryptjs": "^2.4.3",
+    "bluebird": "^3.4.7",
+    "body-parser": "^1.16.0",
+    "cors": "^2.8.3",
+    "express": "^4.14.1",
+    "express-session": "^1.15.1",
+    "jsonwebtoken": "^7.3.0",
+    "mongoose": "^4.8.1",
+    "passport": "^0.3.2",
     "passport-jwt": "^2.2.1",
-    "jsonwebtoken": "^7.3.0"
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0"
   }
 }

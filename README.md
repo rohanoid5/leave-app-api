@@ -74,6 +74,9 @@ In the body put:
 }
 ```
 You'll get an Access Token in response. All other endpoints must use that token to verify the legitimacy of the User.
+```
+"token": "JWT SOMETHING RANDOM"
+```
 
 ## Creating a Leave Request
 
@@ -146,6 +149,24 @@ You'll get a response like:
 }
 ```
 
+## Change Approval Status of a Leave request
+Only a Manager can use this endpoint to change the approval status:
+```
+http PUT http://localhost:3000/leaves/<leave id>
+```
+In the head put:
+```
+Content-Type application/json
+Authorization USER_ACCESS_TOKEN
+```
+In the body put:
+```
+{
+	"approval_status": "REJECTED"
+}
+```
+approval_status is an enum and can only take three values "PENDING", "APPROVED", "REJECTED".
+
 ## Modules used
 
 Some of non standard modules used:
@@ -156,3 +177,23 @@ Some of non standard modules used:
 * [passport-jwt](https://www.npmjs.com/package/passport-jwt)
 * [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)
 * [cors](https://www.npmjs.com/package/cors)
+
+## Live Endpoint
+
+This app is currently live on Heroku and can be found here:
+* [Live](https://leave-request-api.herokuapp.com)
+
+Use this endpoint instead of http://localhost:3000 to make all requests if you don't want to run the app locally.
+
+## Live React app
+
+A very basic implementation of this App can be found here:
+* [React App](https://requestify-app.herokuapp.com/#/)
+
+It is a React-Redux Application built using Material Design.
+This project is also available on gitHub:
+* [gitHub](https://github.com/rohanoid5/requestify)
+
+## Disclaimer
+
+If you're planning to use this application make sure you change the mLab link in app.js

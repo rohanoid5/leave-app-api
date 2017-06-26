@@ -51,9 +51,9 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     leave.create(
         newLeave, (err, data) => {
             if (err) {
-                res.json({ inserted: 'NULL', message: err });
+                res.json({status:500, inserted: 'NULL', message: err });
             } else {
-                res.json({ inserted: data, message: 'Success' });
+                res.json({status:200, inserted: data, message: 'Success' });
             }
         }
     );
@@ -64,17 +64,17 @@ router.get('/', passport.authenticate('jwt', {session: false}), (req, res) => {
     if (req.user.role == 'EMP') {
       leave.find({ 'requested_by.username': req.user.username }, (err, cData) => {
           if (err) {
-              res.json({ err: err });
+              res.json({status:500, leaves: err });
           } else {
-              res.json({ leaves: cData });
+              res.json({status:200, leaves: cData });
           }
       });
     } else if (req.user.role == 'MNG') {
       leave.find({}, (err, data) => {
           if (err) {
-              res.json({ err: err });
+              res.json({status:500, leaves: err });
           } else {
-              res.json({ leaves: data });
+              res.json({status:200, leaves: data });
           }
       });
     }

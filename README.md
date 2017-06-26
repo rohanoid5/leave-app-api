@@ -2,23 +2,26 @@
 A small NodeJS application for a leave application submission and approval.
 
 ## Assignment Details
-The application would involve 2 sets of users ( Employee & Manager) with different authorizations. You must ensure that all API end points consider user role for authorization checks:
-APIs required for Employee
- (GET) Ability to see all previously created leave request & their approval status
- (POST) Create a new leave request ( Start Date , End Date , Leave Type , Reason)
-APIs required for Manager
- (PUT) Ability to approve leave requests created by an employee
- (GET) See all leave requests in the system ( for all employees)
-At a database level, below are sample entities that are required (kindly change accordingly if needed for better implementation) :
-Leave:
+The application involves 2 sets of users ( Employee & Manager) with different authorizations.
+
+APIs for Employee:
+1. (GET) Ability to see all previously created leave request & their approval status
+2. (POST) Create a new leave request ( Start Date , End Date , Leave Type , Reason)
+
+APIs for Manager
+1. (PUT) Ability to approve leave requests created by an employee
+2. (GET) See all leave requests in the system ( for all employees)
+
+Schema used in this application:
+1. Leave:
 StartDate, EndDate, LeaveType , Reason , RequestBy, RequestedAt, ApprovalStatus, ApprovedAt
 LeaveType & ApprovalStatus must be enum with predefined possible values.
-User:
+2. User:
 FirstName, LastName, email, role, username, etc.
 
 ## Running project
 
-You need to have installed Node.js and MongoDB
+Node.js and MongoDB need to be installed.
 
 ### Install dependencies
 

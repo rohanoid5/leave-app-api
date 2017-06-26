@@ -34,29 +34,23 @@ To run server execute:
 node app
 ```
 
-### Make Requests
+### Creating new user
 
-Creating and refreshing access tokens:
+For registration use this endpoint:
 ```
-http POST http://localhost:1337/api/oauth/token grant_type=password client_id=android client_secret=SomeRandomCharsAndNumbers username=myapi password=abc1234
-http POST http://localhost:1337/api/oauth/token grant_type=refresh_token client_id=android client_secret=SomeRandomCharsAndNumbers refresh_token=[TOKEN]
+http POST http://localhost:3000/register
 ```
-
-Creating your article data:
+In the body put:
 ```
-http POST http://localhost:1337/api/articles title=NewArticle author='John Doe' description='Lorem ipsum dolar sit amet' images:='[{"kind":"thumbnail", "url":"http://habrahabr.ru/images/write-topic.png"}, {"kind":"detail", "url":"http://habrahabr.ru/images/write-topic.png"}]' Authorization:'Bearer PUT_YOUR_TOKEN_HERE'
+{
+	"username": "XYZ",
+	"password": "xyz",
+	"email": "x@y.com",
+	"name": "XYZ ABC",
+	"role": "MNG"
+}
 ```
-
-Updating your article data:
-```
-http PUT http://localhost:1337/api/articles/YOUR_ARTICLE_ID_HERE title=NewArticleUpdated author='John Doe' description='Lorem ipsum dolar sit amet' images:='[{"kind":"thumbnail", "url":"http://habrahabr.ru/images/write-topic.png"}, {"kind":"detail", "url":"http://habrahabr.ru/images/write-topic.png"}]' Authorization:'Bearer PUT_YOUR_TOKEN_HERE'
-```
-
-Getting your data
-```
-http http://localhost:1337/api/users/info Authorization:'Bearer PUT_YOUR_TOKEN_HERE'
-http http://localhost:1337/api/articles Authorization:'Bearer PUT_YOUR_TOKEN_HERE'
-```
+Role can be either "MNG" which is Manger or "EMP" which is Employee.
 
 ## Modules used
 

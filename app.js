@@ -10,6 +10,7 @@ const user = require('./models/user');
 const leaveRoutes = require('./routes/leaves');
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
+const propertyRoutes = require('./routes/property');
 const cors = require('cors');
 
 //seedDb();
@@ -38,6 +39,7 @@ require('./config/passport')(passport);
 
 app.use(authRoutes);
 app.use('/leaves', leaveRoutes);
+app.use('/property', propertyRoutes);
 app.use(userRoutes);
 
 app.get('/', (req,res) => {

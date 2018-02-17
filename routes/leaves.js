@@ -9,11 +9,11 @@ const passport = require('passport');
 Promise.promisifyAll(mongoose);
 
 function Leave(reason, start_date, end_date, requested_by, leave_type) {
-    this.reason = reason;
-    this.start_date = start_date;
-    this.end_date = end_date;
-    this.requested_by = requested_by;
-    this.leave_type = leave_type;
+  this.reason = reason;
+  this.start_date = start_date;
+  this.end_date = end_date;
+  this.requested_by = requested_by;
+  this.leave_type = leave_type;
 }
 
 router.put('/:id', passport.authenticate('jwt', {session: false}), (req, res) => {
